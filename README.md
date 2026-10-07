@@ -1,59 +1,604 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistem Informasi Sekolah
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistem Informasi Sekolah berbasis web yang dibangun menggunakan Laravel dan PostgreSQL untuk membantu pengelolaan administrasi dan kegiatan akademik sekolah.
 
-## About Laravel
+Sistem dirancang untuk mengelola data siswa, guru, orang tua/wali, kelas, mata pelajaran, jadwal, absensi, tugas, ujian, nilai, kenaikan kelas, kelulusan, dan riwayat akademik siswa dalam satu aplikasi.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Teknologi
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Project menggunakan:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Laravel
+- PostgreSQL
+- Laravel Blade
+- Laravel Breeze
+- Spatie Laravel Permission
+- Vite
+- NPM
+- Composer
 
-## Learning Laravel
+Development lokal dapat menggunakan Laragon atau environment PHP lain yang memenuhi requirement Laravel.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Fitur
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Authentication & Authorization
 
-## Laravel Sponsors
+- Login
+- Logout
+- Role Based Access Control
+- Permission Based Access Control
+- Status akun
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Role utama:
 
-### Premium Partners
+```text id="dk60qv"
+super_admin
+admin
+principal
+teacher
+student
+parent
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Master Data
 
-## Contributing
+- Tahun ajaran
+- Semester
+- Jurusan
+- Ruangan
+- Mata pelajaran
+- Guru
+- Siswa
+- Orang tua/wali
+- Kelas
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Akademik
 
-## Code of Conduct
+- Pembagian siswa ke kelas
+- Penugasan guru
+- Wali kelas
+- Jadwal pelajaran
+- Absensi
+- Materi pembelajaran
+- Tugas
+- Pengumpulan tugas
+- Ujian
+- Nilai
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Siklus Akademik
 
-## Security Vulnerabilities
+- Kenaikan kelas
+- Siswa mengulang
+- Kelulusan
+- Riwayat akademik
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Laporan
 
-## License
+Direncanakan mendukung:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Laporan siswa
+- Laporan guru
+- Laporan kelas
+- Laporan absensi
+- Laporan nilai
+- Laporan kenaikan kelas
+- Laporan kelulusan
+- Export PDF
+- Export Excel
+
+> Beberapa fitur masih dalam tahap pengembangan. Lihat `docs/10-current-progress.md` untuk status implementasi terbaru.
+
+---
+
+# Requirement
+
+Pastikan perangkat sudah memiliki:
+
+- PHP sesuai requirement versi Laravel yang digunakan project
+- Composer
+- PostgreSQL
+- Node.js
+- NPM
+- Git
+
+Pastikan extension PostgreSQL PHP aktif:
+
+```ini id="ptqmc9"
+extension=pdo_pgsql
+extension=pgsql
+```
+
+Untuk memeriksa:
+
+```bash id="g1v04f"
+php -m
+```
+
+Pastikan terdapat:
+
+```text id="c4k58v"
+pdo_pgsql
+pgsql
+```
+
+---
+
+# Installation
+
+## 1. Clone Repository
+
+```bash id="u0a6qw"
+git clone https://github.com/IhsanBaihaqii/Sistem-Informasi-Sekolah.git
+```
+
+Masuk ke directory project:
+
+```bash id="2x7i92"
+cd Sistem-Informasi-Sekolah
+```
+
+## 2. Install Dependency PHP
+
+```bash id="qxxk14"
+composer install
+```
+
+## 3. Install Dependency Frontend
+
+```bash id="zhx81g"
+npm install
+```
+
+## 4. Buat File Environment
+
+Windows:
+
+```bash id="47lxt3"
+copy .env.example .env
+```
+
+Linux/macOS:
+
+```bash id="58lktp"
+cp .env.example .env
+```
+
+## 5. Generate Application Key
+
+```bash id="32tpxz"
+php artisan key:generate
+```
+
+---
+
+# PostgreSQL
+
+## 1. Buat Database
+
+Buat database PostgreSQL:
+
+```sql id="8mv16h"
+CREATE DATABASE sistem_informasi_sekolah;
+```
+
+Database juga dapat dibuat melalui pgAdmin.
+
+## 2. Konfigurasi `.env`
+
+Buka:
+
+```text id="zllg8n"
+.env
+```
+
+Kemudian konfigurasi database:
+
+```env id="j1fgnm"
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=sistem_informasi_sekolah
+DB_USERNAME=postgres
+DB_PASSWORD=
+```
+
+Isi `DB_PASSWORD` sesuai password PostgreSQL pada perangkat masing-masing.
+
+Jangan commit `.env` ke repository.
+
+---
+
+# Database Migration
+
+Setelah PostgreSQL terhubung:
+
+```bash id="jdzx2x"
+php artisan migrate
+```
+
+Untuk mengisi data development:
+
+```bash id="vcmucm"
+php artisan db:seed
+```
+
+Atau pada instalasi development baru:
+
+```bash id="6ln0c3"
+php artisan migrate:fresh --seed
+```
+
+> `migrate:fresh` akan menghapus seluruh tabel dan data. Gunakan hanya untuk development atau database yang aman untuk dihapus.
+
+---
+
+# Menjalankan Project
+
+## Backend
+
+Jalankan Laravel:
+
+```bash id="f4yjg8"
+php artisan serve
+```
+
+Default:
+
+```text id="u25krd"
+http://127.0.0.1:8000
+```
+
+## Frontend Development
+
+Buka terminal kedua:
+
+```bash id="17mb9u"
+npm run dev
+```
+
+Jadi ketika development biasanya terdapat dua terminal:
+
+```text id="8m30dv"
+Terminal 1
+php artisan serve
+
+Terminal 2
+npm run dev
+```
+
+Jika menggunakan Laragon dengan virtual host, konfigurasi dapat disesuaikan dengan environment lokal.
+
+---
+
+# Akun Development
+
+Seeder menyediakan beberapa akun untuk keperluan development.
+
+## Super Admin
+
+```text id="rqdz87"
+Email    : admin@super.com
+Password : #Admin123
+```
+
+## Guru
+
+```text id="90sj87"
+Email    : guru@sekolah.test
+Password : Guru123!
+```
+
+## Siswa
+
+```text id="czhcbm"
+Email    : siswa@sekolah.test
+Password : Siswa123!
+```
+
+> Akun dan password tersebut hanya untuk development. Jangan gunakan credential tersebut pada production.
+
+---
+
+# Seeder
+
+Seeder utama:
+
+```text id="kkysxr"
+database/seeders/
+├── DatabaseSeeder.php
+├── RolePermissionSeeder.php
+├── SuperAdminSeeder.php
+├── SchoolMasterSeeder.php
+└── TeacherStudentSeeder.php
+```
+
+Untuk menjalankan seluruh seeder:
+
+```bash id="yjzt25"
+php artisan db:seed
+```
+
+---
+
+# Struktur Project
+
+Struktur utama:
+
+```text id="7ph1cd"
+Sistem-Informasi-Sekolah/
+│
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   ├── Middleware/
+│   │   └── Requests/
+│   │
+│   ├── Models/
+│   ├── Policies/
+│   ├── Providers/
+│   └── Services/
+│
+├── bootstrap/
+├── config/
+│
+├── database/
+│   ├── factories/
+│   ├── migrations/
+│   └── seeders/
+│
+├── docs/
+│   ├── README.md
+│   ├── 01-project-overview.md
+│   ├── 02-system-architecture.md
+│   ├── 03-roles-permissions.md
+│   ├── 04-database-design.md
+│   ├── 05-business-workflow.md
+│   ├── 06-feature-modules.md
+│   ├── 07-routing-structure.md
+│   ├── 08-development-roadmap.md
+│   ├── 09-development-rules.md
+│   └── 10-current-progress.md
+│
+├── public/
+├── resources/
+│   ├── css/
+│   ├── js/
+│   └── views/
+│
+├── routes/
+│
+├── storage/
+├── tests/
+│
+├── .env.example
+├── artisan
+├── composer.json
+├── package.json
+└── README.md
+```
+
+---
+
+# Dokumentasi
+
+Dokumentasi lengkap tersedia pada:
+
+```text id="4x2wmh"
+docs/
+```
+
+Mulai dari:
+
+```text id="3x38xm"
+docs/README.md
+```
+
+Dokumentasi mencakup:
+
+| Dokumentasi         | File                             |
+| ------------------- | -------------------------------- |
+| Project Overview    | `docs/01-project-overview.md`    |
+| System Architecture | `docs/02-system-architecture.md` |
+| Roles & Permissions | `docs/03-roles-permissions.md`   |
+| Database Design     | `docs/04-database-design.md`     |
+| Business Workflow   | `docs/05-business-workflow.md`   |
+| Feature Modules     | `docs/06-feature-modules.md`     |
+| Routing Structure   | `docs/07-routing-structure.md`   |
+| Development Roadmap | `docs/08-development-roadmap.md` |
+| Development Rules   | `docs/09-development-rules.md`   |
+| Current Progress    | `docs/10-current-progress.md`    |
+
+Developer dan AI coding agent disarankan membaca dokumentasi sebelum melakukan perubahan besar pada project.
+
+---
+
+# Development Workflow
+
+Alur pengembangan:
+
+```text id="27vh4q"
+Create Branch
+     ↓
+Develop Feature
+     ↓
+Migration / Model
+     ↓
+Validation
+     ↓
+Authorization
+     ↓
+Business Logic
+     ↓
+UI
+     ↓
+Testing
+     ↓
+Update Documentation
+     ↓
+Commit
+```
+
+Contoh membuat branch:
+
+```bash id="6b9dcx"
+git checkout -b feature/student-management
+```
+
+Setelah perubahan:
+
+```bash id="7y28cw"
+git status
+```
+
+```bash id="mp6xzs"
+git add .
+```
+
+```bash id="1e71ip"
+git commit -m "feat: add student management"
+```
+
+Push:
+
+```bash id="h70omq"
+git push origin feature/student-management
+```
+
+---
+
+# Useful Commands
+
+Menjalankan aplikasi:
+
+```bash id="fexrgd"
+php artisan serve
+```
+
+Menjalankan Vite:
+
+```bash id="6dc08p"
+npm run dev
+```
+
+Migration:
+
+```bash id="sdgftg"
+php artisan migrate
+```
+
+Seeder:
+
+```bash id="qtrp6q"
+php artisan db:seed
+```
+
+Melihat status migration:
+
+```bash id="cnp3j2"
+php artisan migrate:status
+```
+
+Membersihkan cache Laravel:
+
+```bash id="9gbxyc"
+php artisan optimize:clear
+```
+
+Tinker:
+
+```bash id="h00u9g"
+php artisan tinker
+```
+
+Menjalankan test:
+
+```bash id="lf8i4b"
+php artisan test
+```
+
+Build frontend:
+
+```bash id="88k9d3"
+npm run build
+```
+
+---
+
+# Aturan Penting
+
+Jangan commit file:
+
+```text id="y1lt8e"
+.env
+```
+
+Jangan commit:
+
+- Password database
+- API key
+- Secret key
+- Credential production
+- File sensitif lainnya
+
+Jangan menjalankan:
+
+```bash id="r2fwq6"
+php artisan migrate:fresh
+```
+
+pada database production.
+
+Perintah tersebut menghapus seluruh tabel beserta data.
+
+---
+
+# Status Pengembangan
+
+Project masih dalam tahap pengembangan.
+
+Status implementasi terbaru dapat dilihat pada:
+
+```text id="1vwsqf"
+docs/10-current-progress.md
+```
+
+Roadmap dapat dilihat pada:
+
+```text id="z2rvg2"
+docs/08-development-roadmap.md
+```
+
+---
+
+# Repository
+
+Repository:
+
+https://github.com/IhsanBaihaqii/Sistem-Informasi-Sekolah
+
+---
+
+# License
+
+Project ini dikembangkan untuk Sistem Informasi Sekolah.
+
+Informasi lisensi dapat ditambahkan pada file `LICENSE` apabila project akan didistribusikan secara publik.
+
+Pastikan `.gitignore` Laravel mencakup minimal:
+
+```gitignore id="5u7wt9"
+/node_modules
+/public/build
+/public/hot
+/storage/*.key
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+```
