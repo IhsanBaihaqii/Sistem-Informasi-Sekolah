@@ -41,4 +41,14 @@ class Subject extends Model
     {
         return $this->hasMany(Schedule::class);
     }
+
+    public function materials(): HasMany
+    {
+        return $this->hasMany(Material::class);
+    }
+
+    public function assignments(): HasMany
+    {
+        return $this->hasMany(Assignment::class);
+    }
 }

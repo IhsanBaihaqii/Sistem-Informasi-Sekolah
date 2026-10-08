@@ -64,4 +64,9 @@ class Student extends Model
     {
         return $this->hasMany(Attendance::class);
     }
+
+    public function assignmentSubmissions(): HasMany
+    {
+        return $this->hasMany(AssignmentSubmission::class);
+    }
 }
