@@ -7,29 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Schedule extends Model
+class AttendanceSession extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'school_year_id',
         'semester_id',
+        'schedule_id',
         'classroom_id',
         'teacher_id',
-        'subject_id',
-        'room_id',
-        'day_of_week',
-        'start_time',
-        'end_time',
+        'attendance_date',
+        'opened_at',
+        'closed_at',
+        'status',
         'notes',
-        'is_active',
     ];
 
     protected function casts(): array
     {
         return [
-            'day_of_week' => 'integer',
-            'is_active' => 'boolean',
+            'attendance_date' => 'date',
         ];
     }
 
@@ -43,6 +41,11 @@ class Schedule extends Model
         return $this->belongsTo(Semester::class);
     }
 
+    public function schedule(): BelongsTo
+    {
+        return $this->belongsTo(Schedule::class);
+    }
+
     public function classroom(): BelongsTo
     {
         return $this->belongsTo(Classroom::class);
@@ -53,18 +56,8 @@ class Schedule extends Model
         return $this->belongsTo(Teacher::class);
     }
 
-    public function subject(): BelongsTo
+    public function attendances(): HasMany
     {
-        return $this->belongsTo(Subject::class);
-    }
-
-    public function room(): BelongsTo
-    {
-        return $this->belongsTo(Room::class);
-    }
-
-    public function attendanceSessions(): HasMany
-    {
-        return $this->hasMany(AttendanceSession::class);
+        return $this->hasMany(Attendance::class);
     }
 }

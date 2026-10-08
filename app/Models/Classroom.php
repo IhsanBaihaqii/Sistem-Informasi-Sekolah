@@ -63,4 +63,9 @@ class Classroom extends Model
     {
         return $this->hasMany(Schedule::class);
     }
+
+    public function attendanceSessions(): HasMany
+    {
+        return $this->hasMany(AttendanceSession::class);
+    }
 }
