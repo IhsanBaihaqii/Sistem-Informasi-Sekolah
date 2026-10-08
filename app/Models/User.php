@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\ParentProfile;
+
 
 class User extends Authenticatable
 {
@@ -40,5 +42,10 @@ class User extends Authenticatable
     public function student(): HasOne
     {
         return $this->hasOne(Student::class);
+    }
+
+    public function parent(): HasOne
+    {
+        return $this->hasOne(ParentProfile::class);
     }
 }

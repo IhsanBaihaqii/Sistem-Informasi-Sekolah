@@ -7,23 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Semester extends Model
+class Classroom extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'school_year_id',
+        'major_id',
         'name',
-        'start_date',
-        'end_date',
+        'grade_level',
+        'homeroom_teacher_id',
+        'room_id',
+        'capacity',
         'is_active',
     ];
 
     protected function casts(): array
     {
         return [
-            'start_date' => 'date',
-            'end_date' => 'date',
+            'grade_level' => 'integer',
+            'capacity' => 'integer',
             'is_active' => 'boolean',
         ];
     }
@@ -33,7 +36,25 @@ class Semester extends Model
         return $this->belongsTo(SchoolYear::class);
     }
 
-    public function classEnrollments(): HasMany
+    public function major(): BelongsTo
+    {
+        return $this->belongsTo(Major::class);
+    }
+
+    public function homeroomTeacher(): BelongsTo
+    {
+        return $this->belongsTo(
+            Teacher::class,
+            'homeroom_teacher_id'
+        );
+    }
+
+    public function room(): BelongsTo
+    {
+        return $this->belongsTo(Room::class);
+    }
+
+    public function enrollments(): HasMany
     {
         return $this->hasMany(ClassEnrollment::class);
     }

@@ -6,26 +6,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Models\ParentProfile;
 
-class Student extends Model
+class ParentProfile extends Model
 {
     use HasFactory;
 
+    protected $table = 'parents';
+
     protected $fillable = [
         'user_id',
-        'nis',
-        'nisn',
         'full_name',
+        'nik',
         'gender',
         'birth_place',
         'birth_date',
         'religion',
-        'address',
+        'occupation',
         'phone',
-        'admission_date',
-        'photo',
+        'address',
         'status',
     ];
 
@@ -33,7 +31,6 @@ class Student extends Model
     {
         return [
             'birth_date' => 'date',
-            'admission_date' => 'date',
         ];
     }
 
@@ -42,21 +39,16 @@ class Student extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function parents(): BelongsToMany
+    public function students(): BelongsToMany
     {
         return $this->belongsToMany(
-            ParentProfile::class,
+            Student::class,
             'student_parents',
-            'student_id',
-            'parent_id'
+            'parent_id',
+            'student_id'
         )->withPivot([
             'relationship',
             'is_primary',
         ])->withTimestamps();
-    }
-
-    public function enrollments(): HasMany
-    {
-        return $this->hasMany(ClassEnrollment::class);
     }
 }
