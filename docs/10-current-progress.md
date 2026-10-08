@@ -224,3 +224,39 @@ Dokumen ini harus diperbarui setiap kali milestone utama selesai agar developer 
 Dengan struktur ini, nanti ketika kamu memberikan project ke AI agent, kamu cukup memberi instruksi seperti:
 
 > **Baca seluruh dokumentasi di folder `docs/`, terutama `09-development-rules.md` dan `10-current-progress.md`, sebelum melakukan perubahan. Jangan mengubah arsitektur atau database tanpa menyesuaikan dokumentasi.**
+
+## Current Progress
+
+### Completed
+
+- [x] Laravel 12 project setup
+- [x] PostgreSQL database
+- [x] Laravel Breeze authentication
+- [x] Spatie Laravel Permission
+- [x] Roles and permissions
+- [x] School years
+- [x] Semesters
+- [x] Majors
+- [x] Rooms
+- [x] Subjects
+- [x] Teachers
+- [x] Students
+- [x] Parent profiles
+- [x] Student-parent relationships
+- [x] Teacher-subject relationships
+- [x] Classrooms
+- [x] Class enrollments
+- [x] Academic structure seeder
+- [x] Academic relationship verification
+
+### Next
+
+- [ ] Schedules
+- [ ] Schedule conflict validation
+- [ ] Attendance
+- [ ] Learning materials
+- [ ] Assignments
+- [ ] Exams
+- [ ] Grades
+- [ ] Student promotion
+- [ ] Graduation

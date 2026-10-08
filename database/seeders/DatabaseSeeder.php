@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
             SuperAdminSeeder::class,
             SchoolMasterSeeder::class,
             TeacherStudentSeeder::class,
+            AcademicStructureSeeder::class,
+            ScheduleSeeder::class,
         ]);
     }
 }

@@ -30,4 +30,9 @@ class SchoolYear extends Model
     {
         return $this->hasMany(Semester::class);
     }
+
+    public function schedules(): HasMany
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }
