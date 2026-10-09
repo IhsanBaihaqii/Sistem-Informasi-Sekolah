@@ -86,8 +86,8 @@
                         Manajemen Sekolah
                     </p>
 
-                    <a href="#"
-                       class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-slate-600 hover:bg-slate-100">
+                    <a href="{{ route('admin.students.index') }}"
+                        class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-slate-600 hover:bg-slate-100">
                         <i class="fa-solid fa-user-graduate w-5 text-center"></i>
                         Data Siswa
                     </a>

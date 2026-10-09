@@ -6,6 +6,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Teacher\ExamController as TeacherExamController;
 use App\Http\Controllers\Student\ExamController as StudentExamController;
 
+use App\Http\Controllers\Admin\StudentController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,6 +25,20 @@ Route::middleware('auth')->group(function () {
 Route::get('/dashboard', DashboardController::class)
     ->middleware(['auth'])
     ->name('dashboard');
+
+Route::middleware(['auth', 'role:super_admin|admin'])
+    ->prefix('admin/siswa')
+    ->name('admin.students.')
+    ->controller(StudentController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/', 'store')->name('store');
+        Route::get('/{id}', 'show')->whereNumber('id')->name('show');
+        Route::get('/{id}/edit', 'edit')->whereNumber('id')->name('edit');
+        Route::put('/{id}', 'update')->whereNumber('id')->name('update');
+        Route::delete('/{id}', 'destroy')->whereNumber('id')->name('destroy');
+    });
 
 Route::middleware(['auth', 'role:teacher'])
     ->prefix('guru')

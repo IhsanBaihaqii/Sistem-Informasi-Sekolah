@@ -67,15 +67,17 @@
 
                 <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                     @if (in_array($role, ['super_admin', 'admin']))
-                        <a href="#"
-                           class="group flex items-center gap-4 rounded-xl border border-slate-200 p-4 hover:border-blue-200 hover:bg-blue-50">
+                        <a href="{{ route('admin.students.index') }}"
+                            class="group flex items-center gap-4 rounded-xl border border-slate-200 p-4 hover:border-blue-200 hover:bg-blue-50">
                             <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-100 text-blue-700">
                                 <i class="fa-solid fa-user-graduate"></i>
                             </span>
+
                             <span>
                                 <span class="block text-sm font-semibold text-slate-800">Data Siswa</span>
                                 <span class="mt-1 block text-xs text-slate-500">Pengelolaan data siswa</span>
                             </span>
+
                             <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-xs text-slate-400"></i>
                         </a>
 
