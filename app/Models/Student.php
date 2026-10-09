@@ -74,4 +74,24 @@ class Student extends Model
     {
         return $this->hasMany(ExamAttempt::class);
     }
+
+    public function grades(): HasMany
+    {
+        return $this->hasMany(Grade::class);
+    }
+
+    public function promotions(): HasMany
+    {
+        return $this->hasMany(StudentPromotion::class);
+    }
+
+    public function graduations(): HasMany
+    {
+        return $this->hasMany(Graduation::class);
+    }
+
+    public function academicHistories(): HasMany
+    {
+        return $this->hasMany(StudentAcademicHistory::class);
+    }
 }

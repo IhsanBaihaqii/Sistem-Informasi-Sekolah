@@ -33,8 +33,8 @@
         <select id="gender" name="gender" required
             class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:border-blue-500 focus:ring-blue-100">
             <option value="">Pilih jenis kelamin</option>
-            <option value="Laki-laki" @selected(old('gender', $student->gender ?? '') === 'Laki-laki')>Laki-laki</option>
-            <option value="Perempuan" @selected(old('gender', $student->gender ?? '') === 'Perempuan')>Perempuan</option>
+            <option value="Laki-laki" @selected(in_array(old('gender', $student->gender ?? ''), ['Laki-laki', 'male', 'L']))>Laki-laki</option>
+            <option value="Perempuan" @selected(in_array(old('gender', $student->gender ?? ''), ['Perempuan', 'female', 'P']))>Perempuan</option>
         </select>
         @error('gender') <p class="mt-1 text-sm text-red-600">{{ $message }}</p> @enderror
     </div>

@@ -72,4 +72,9 @@ class Teacher extends Model
     {
         return $this->hasMany(Exam::class);
     }
+
+    public function grades(): HasMany
+    {
+        return $this->hasMany(Grade::class);
+    }
 }

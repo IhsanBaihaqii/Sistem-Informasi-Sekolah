@@ -44,7 +44,7 @@ class AcademicStructureSeeder extends Seeder
                 ],
                 [
                     'full_name' => 'Budi Pratama',
-                    'gender' => 'male',
+                    'gender' => 'Laki-laki',
                     'birth_place' => 'Medan',
                     'birth_date' => '1980-01-01',
                     'religion' => 'Islam',

@@ -133,7 +133,7 @@ class StudentController extends Controller
 
     private function validateStudent(Request $request, ?int $studentId = null): array
     {
-        return $request->validate([
+        $validated = $request->validate([
             'user_id' => [
                 'nullable',
                 'integer',
@@ -153,7 +153,7 @@ class StudentController extends Controller
                 Rule::unique('students', 'nisn')->ignore($studentId),
             ],
             'full_name' => ['required', 'string', 'max:150'],
-            'gender' => ['required', Rule::in(['Laki-laki', 'Perempuan'])],
+            'gender' => ['required', Rule::in(['Laki-laki', 'Perempuan', 'male', 'female', 'L', 'P'])],
             'birth_place' => ['nullable', 'string', 'max:100'],
             'birth_date' => ['nullable', 'date', 'before_or_equal:today'],
             'religion' => ['nullable', 'string', 'max:30'],
@@ -163,5 +163,13 @@ class StudentController extends Controller
             'photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:2048'],
             'status' => ['required', Rule::in(['active', 'inactive', 'graduated', 'transferred'])],
         ]);
+
+        if (in_array(strtolower($validated['gender']), ['male', 'l'])) {
+            $validated['gender'] = 'Laki-laki';
+        } elseif (in_array(strtolower($validated['gender']), ['female', 'p'])) {
+            $validated['gender'] = 'Perempuan';
+        }
+
+        return $validated;
     }
 }
